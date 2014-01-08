@@ -1,0 +1,87 @@
+<div id="userProfileWrapper" about='currentPersonObs'>
+
+    <div id= "imgWrapper">
+        <img class="depiction" data-bind='attr:{src: [foaf:depiction]}' alt="User avatar">
+        <div id= "nameText" class="p5">
+            <span data-bind='text: [foaf:name]'></span>
+        </div>
+    </div>
+
+    <div id="contact" >
+        <div class="name info" id="name">
+            <div class="labelContainer">
+                <label>Name</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:name]' ></span>
+            <span class="labelText2" data-bind='text: [foaf:name]' ></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png" >
+            </a>
+        </div>
+
+        <div class="nickname info" id="nick">
+            <div class="labelContainer">
+                <label>Nickname</label>
+            </div>
+            <span id="nickLabel" class="labelText" data-bind='text: [foaf:nick]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+
+        <div class="email info" id="mbox">
+            <div class="labelContainer">
+                <label>Email</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:mbox]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+
+        <div class="phone info" id="phone">
+            <div class="labelContainer">
+                <label>Phone</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:phone]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+    </div>
+
+    <div id="basics">
+        <div class="birthday info" id="birthday">
+            <div class="labelContainer">
+                <label>Birthday</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:birthday]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+        <div class="gender info" id="gender">
+            <div class="labelContainer">
+                <label>Gender</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:gender]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+        <div class="website info" id="homepage">
+            <div class="labelContainer">
+                <label>Website</label>
+            </div>
+            <span class="labelText" data-bind='text: [foaf:homepage]'></span>
+            <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+            </a>
+        </div>
+    </div>
+
+    <div id="friends">
+        <label>Show contacts</label>
+    </div>
+
+</div>

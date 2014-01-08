@@ -1,0 +1,170 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+	<title>Primary Html file.</title>
+
+    <link type="text/css" rel="stylesheet" href="css/blueprint.css">
+    <link type="text/css" rel="stylesheet" href="css/buttons.css">
+    <link type="text/css" rel="stylesheet" href="css/common.css">
+    <link type="text/css" rel="stylesheet" href="css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+
+	<script type="text/javascript" src="lib/jquery.js"></script>
+    <script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+	<script type="text/javascript" src="lib/underscore.js"></script>
+	<script type="text/javascript" src="lib/rdflib.js"></script>
+    <script type='text/javascript' src="lib/knockout-latest.debug.js"></script>
+    <script type='text/javascript' src="lib/rdf_store.js"></script>
+
+    <script type='text/javascript' src="lib/semko.js"></script>
+    <script type='text/javascript' src="lib/rdfstore_frontend.js"></script>
+
+	<script type="text/javascript" src="js/loadScript.js"></script>
+	<script type="text/javascript" src="js/loadCSS.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+
+    <link href='https://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+
+</head>
+
+
+<body>
+<div id="search">
+    <div id="add">+</div>
+    <input type="text" placeholder="Search your contacts"/>
+    <button type="submit" class="fontawesome-ok"></button>
+</div>
+<div id="actionNeeded">Action needed</div>
+<div class="contacts clearfix" id="contactsContainer">
+    <ul class="clearfix" data-bind="template: 'miniUser-template'"></ul>
+</div>
+
+<!-- The template -->
+<script id="miniUser-template" type="text/html">
+    {{each userContacts}}
+    <li class="contact clearfix" about="${$value}">
+        <div class="cssLoader loader style-3"></div>
+        <div class="picture"><img data-bind="attr: {src: showImage() }" alt="Picture"/></div>
+        <div class="name" data-bind="text: [foaf:name]"></div>
+        <div class="surname" data-bind="text: [foaf:nick]"></div>
+        <div class="company" data-bind="text: [foaf:nick]"></div>
+        <div class="newMessages" data-bind="text: showNewMessageNumber()"></div>
+        <div class="recentInteractions" data-bind="text: showRecentInteractionNumber()"></div>
+        <div class="updates" data-bind="text: showUpdateNumber()"></div>
+        <div class="moreInfo">
+            <div class="lastInteraction">Last message from Edward: <span data-bind="text: showLastInteractionsDate()">three days ago</span></div>
+            <div class="message" data-bind="text: showLastMessage()">Hey, how was the play? I hope you enjoyed it. Let's talk about it this week...</div>
+            <div class="nextStep"><a href="#">Write back</a></div>
+        </div>
+    </li>
+    {{/each}}
+</script>
+
+<!-- The template -->
+<script id="userProfileTemplate" type="text/html">
+    <div id="userProfileWrapper">
+
+        <div id= "imgWrapper">
+            <img class="depiction" data-bind='attr:{src: [foaf:depiction]}' alt="User avatar">
+            <div id= "nameText" class="p5">
+                <span data-bind='text: [foaf:name]'></span>
+            </div>
+        </div>
+
+        <div id="contact" >
+            <div class="name info" id="name">
+                <div class="labelContainer">
+                    <label>Name</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:name]' ></span>
+                <span class="labelText2" data-bind='text: [foaf:name]' ></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png" >
+                </a>
+            </div>
+
+            <div class="nickname info" id="nick">
+                <div class="labelContainer">
+                    <label>Nickname</label>
+                </div>
+                <span id="nickLabel" class="labelText" data-bind='text: [foaf:nick]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+
+            <div class="email info" id="mbox">
+                <div class="labelContainer">
+                    <label>Email</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:mbox]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+
+            <div class="phone info" id="phone">
+                <div class="labelContainer">
+                    <label>Phone</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:phone]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+        </div>
+
+        <div id="basics">
+            <div class="birthday info" id="birthday">
+                <div class="labelContainer">
+                    <label>Birthday</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:birthday]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+            <div class="gender info" id="gender">
+                <div class="labelContainer">
+                    <label>Gender</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:gender]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+            <div class="website info" id="homepage">
+                <div class="labelContainer">
+                    <label>Website</label>
+                </div>
+                <span class="labelText" data-bind='text: [foaf:homepage]'></span>
+                <a href="#" role="button" class="editLink" data-bind='click: showEdit'>
+                    <img class="editLinkImg" src="/assets/ldp/images/edit-icon-bw.png">
+                </a>
+            </div>
+        </div>
+
+        <div id="friends">
+            <label>Show contacts</label>
+        </div>
+
+    </div>
+</script>
+
+<!-- The template -->
+<script id="editForm" type="text/html">
+    <form id="form"  data-bind='submit: submitForm'>
+        <input id="input" style="" data-bind="value: [foaf:name]">
+        <div class="savePrompt">Save changes?
+            <span class="yesSave submit" data-bind='click: submitButton'>Yes</span>
+            <span class="noCancel cancel" data-bind='click: cancelButton'>No</span>
+        </div>
+    </form>
+</script>
+
+</body>
+
+</html>
